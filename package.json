@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve",
+    "start": "webpack serve",
     "build": "webpack -w"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.12.1"
+    "@babel/polyfill": "^7.12.1",
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

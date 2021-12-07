@@ -1,0 +1,54 @@
+@import '../styles/globalvars/globalvars.scss';
+
+.home {
+  flex: 1;
+  min-height: 100vh;
+  &__inner {
+    display: block;
+  }
+  &__section {
+    position: relative;
+    height: 100vh;
+    &-bg {
+      display: block;
+    }
+    &-content {
+      @include absolute-full;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem $contentPadding;
+      box-sizing: border-box;
+      h2 {
+        font-size: 5rem;
+        font-weight: normal;
+        color: rgba(100,100,100,0);
+        animation: fadeInOut 5s ease 2s forwards;
+        strong {
+          display: block;
+          padding: 1.6rem 0;
+          font-weight: normal;
+          span {
+            color: $primary;
+            font-family: $fontGugi;
+            font-size: 7rem;
+          }
+        }
+      }
+      p {
+        color: $grey;
+        font-size: 2.4rem;
+        letter-spacing: 0.1rem;
+      }
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    color: rgba(100,100,100,0);
+  }
+  100% {
+    color: rgba(100,100,100,1);
+  }
+}

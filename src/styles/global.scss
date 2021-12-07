@@ -1,0 +1,16 @@
+@import './globalvars/globalvars.scss';
+
+// Normalize
+@import '../../node_modules/normalize.css/normalize.css';
+
+// Fonts
+html {
+  color: #fff;
+  font-family: $fontDefault;
+  font-size: 10px;
+}
+
+// App css
+.app {
+  display: flex;
+}
