@@ -1,15 +1,15 @@
 import compStyle from './Navbar.scss';
 
-const Navbar = function (onClick, $container, menus, urls) {
+const Navbar = function ($container, onClick, menus, urls) {
   if (!(this instanceof Navbar)) {
     return new Navbar;
   }
   
   const defParams = {
-    $container: $container ? $container : document.getElementById('app'),
+    $container: $container,
     menus: menus || ['About', 'Projects', 'Contact'],
     urls: urls || ['/about', '/projects', '/contact'],
-    onClickCallback : onClick,
+    callback : onClick,
     seletedClass: compStyle['is-selected'],
     currentIdx: null
   };
@@ -54,10 +54,11 @@ Navbar.prototype = {
     const $target = e.target;
     if ($target.tagName !== 'A') return;
     if ($target.parentNode.classList.contains(compStyle.navbar__logo)) {
-      this.opts.onClickCallback('/');
-      if (this.opts.currentIdx) {
+      this.opts.callback('/');
+      if (this.opts.currentIdx !== null) {
         this.$navMenuItems[this.opts.currentIdx].classList.remove(this.opts.seletedClass);
       }
+      this.opts.currentIdx = null;
       return;
     }
     const idx = $target.getAttribute('data-idx');
@@ -68,7 +69,7 @@ Navbar.prototype = {
       }
       $target.classList.add(this.opts.seletedClass);
       this.opts.currentIdx = idx;
-      this.opts.onClickCallback(url);
+      this.opts.callback(url);
     }
   },
   bindEvents: function () {

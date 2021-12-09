@@ -1,36 +1,48 @@
-import compStyle from './About.scss';
-
-const About = function ($container) {
+import ContentSection from './ContentSection';
+const About = function ($wrapper) {
   if (!(this instanceof About)) {
     return new About;
   }
   
-  const defParams = {
-    $container: $container ? $container : document.getElementById('app'),
-    
-  };
-  this.opts = { ...defParams };
+  ContentSection.call(this, $wrapper);
   this.init(); 
 }
 
-About.prototype = {
-  init: function () {
+About.prototype = Object.create(ContentSection.prototype);
+
+About.prototype.init = function () {
     this.setElements();
-  },
-  setElements: function () {
-    this.$container = this.opts.$container.appendChild(document.createElement('div'));
+};
+
+About.prototype.setElements = function () {
+  this.$container = this.$wrapper.appendChild(document.createElement('div'));
     this.$container.classList.add(compStyle.about);
     this.$container.innerHTML = `
       <div>
       </div>
     `;
-  },
-  show: function () {
-    this.$container.style.display = '';
-  },
-  hide: function () {
-    this.$container.style.display = 'none';
-  }
 };
+
+// About.prototype = Object.create(ContentSection.prototype, {
+//   init: {
+//     configurable: false,
+//     value: function () {
+//       this.setElements();
+//     }
+//   },
+//   setElements: {
+//     configurable: false,
+//     value: function () {
+//       this.$container = this.$wrapper.appendChild(document.createElement('div'));
+//       this.$container.classList.add(compStyle.about);
+//       this.$container.innerHTML = `
+//         <div>
+//         </div>
+//       `;
+//     }
+//   }
+// });
+
+About.prototype.constructor = About;
 
 export default About;

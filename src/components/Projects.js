@@ -1,36 +1,33 @@
-import compStyle from './Projects.scss';
-
-const Projects = function ($container) {
+import ContentSection from './ContentSection';
+const Projects = function ($wrapper) {
   if (!(this instanceof Projects)) {
     return new Projects;
   }
   
-  const defParams = {
-    $container: $container ? $container : document.getElementById('app'),
-    
-  };
-  this.opts = { ...defParams };
+  ContentSection.call(this, $wrapper);
   this.init(); 
 }
 
-Projects.prototype = {
-  init: function () {
+Projects.prototype = Object.create(ContentSection.prototype, {
+  init: {
+    configurable: false,
+    value: function () {
     this.setElements();
+    }
   },
-  setElements: function () {
-    this.$container = this.opts.$container.appendChild(document.createElement('div'));
+  setElements: {
+    configurable: false,
+    value: function () {
+      this.$container = this.$wrapper.appendChild(document.createElement('div'));
     this.$container.classList.add(compStyle.projects);
     this.$container.innerHTML = `
       <div>
       </div>
     `;
-  },
-  show: function () {
-    this.$container.style.display = '';
-  },
-  hide: function () {
-    this.$container.style.display = 'none';
   }
-};
+  }
+});
+
+Projects.prototype.constructor = Projects;
 
 export default Projects;

@@ -1,36 +1,33 @@
-import compStyle from './Contact.scss';
-
-const Contact = function ($container) {
+import ContentSection from './ContentSection';
+const Contact = function ($wrapper) {
   if (!(this instanceof Contact)) {
     return new Contact;
   }
   
-  const defParams = {
-    $container: $container ? $container : document.getElementById('app'),
-    
-  };
-  this.opts = { ...defParams };
+  ContentSection.call(this, $wrapper);
   this.init(); 
 }
 
-Contact.prototype = {
-  init: function () {
+Contact.prototype = Object.create(ContentSection.prototype, {
+  init: {
+    configurable: false,
+    value: function () {
     this.setElements();
+    }
   },
-  setElements: function () {
-    this.$container = this.opts.$container.appendChild(document.createElement('div'));
+  setElements: {
+    configurable: false,
+    value: function () {
+      this.$container = this.$wrapper.appendChild(document.createElement('div'));
     this.$container.classList.add(compStyle.contact);
     this.$container.innerHTML = `
       <div>
       </div>
     `;
-  },
-  show: function () {
-    this.$container.style.display = '';
-  },
-  hide: function () {
-    this.$container.style.display = 'none';
   }
-};
+  }
+});
+
+Contact.prototype.constructor = Contact;
 
 export default Contact;
