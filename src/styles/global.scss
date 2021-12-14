@@ -13,4 +13,11 @@ html {
 // App css
 .app {
   display: flex;
+  &__nav {
+    display: block;
+  }
+  &__contents {
+    display: block;
+    width: 100%;
+  }
 }

@@ -6,9 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const isDevelopment = true;
 
 module.exports = {
-  mode: 'development',
   entry: {
-    main: './src/index.js'
+    main: './src/index.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,6 +15,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node-modules/
+      },
       {
         test: /\.js$/,
         include: [
@@ -53,6 +57,7 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // { loader: "css-modules-typescript-loader"},
           {
             loader: 'css-loader',
             options: {
@@ -72,6 +77,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
   },
   plugins: [
     new MiniCssExtractPlugin({
