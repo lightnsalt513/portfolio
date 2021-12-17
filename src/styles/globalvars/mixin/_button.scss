@@ -1,0 +1,46 @@
+@mixin buttonPill {
+  display: inline-block;
+  min-width: 18rem;
+  padding: 0.8rem 2rem;
+  border: 3px solid $greyLight;
+  border-radius: 5px;;
+  color: $greyDark;
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: 0.3s all;
+  box-sizing: border-box;
+  text-align: center;
+  &:hover, &:focus {
+    border-color: $brown;
+    color: $brown;
+  }
+}
+
+@mixin buttonLink {
+  position: relative;
+  color: $greyDark;
+  font-size: 1.8rem;
+  text-decoration: none;
+  &:after,
+  &:before {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 2px dotted $greyDark;
+    content: '';
+  }
+  &:after {
+    width: 0;
+    border-bottom: 2px solid $color2;
+    transition: 0.3s width;
+  }
+  &:hover, &:focus {
+    color: $color2;
+    &:after {
+      width: 100%;
+    }
+  }
+}

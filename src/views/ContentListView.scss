@@ -1,11 +1,22 @@
 @import '../styles/globalvars/globalvars.scss';
 
-.contents {
-  overflow-y: scroll;
+$component: 'contents';
+
+.#{$component} {
   width: 100%;
-  height: 100vh;
-  background: $darkMedium;
+  max-width: 1000px;
+  padding: 14rem $contentPadding 18rem;
+  box-sizing: border-box;
   &__section {
-    display: block;
+    margin-top: 14rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  .#{$component} {
+    padding: 7rem $contentPaddingSm 9rem;
   }
 }

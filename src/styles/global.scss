@@ -1,23 +1,52 @@
 @import './globalvars/globalvars.scss';
 
-// Normalize
-@import '../../node_modules/normalize.css/normalize.css';
+// Reset
+@import '../../node_modules/reset-css/reset.css';
 
 // Fonts
 html {
-  color: #fff;
+  color: $greyDark;
   font-family: $fontDefault;
   font-size: 10px;
 }
 
 // App css
 .app {
-  display: flex;
+  display: block;
   &__nav {
-    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 32%;
   }
   &__contents {
-    display: block;
-    width: 100%;
+    width: 68%;
+    margin-left: 32%;
+  }
+}
+
+@include breakpoint(lg) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@include breakpoint(md) {
+  .app {
+    &__nav {
+      position: static;
+      width: 100%;
+    }
+    &__contents {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  html {
+    font-size: 8px;
   }
 }

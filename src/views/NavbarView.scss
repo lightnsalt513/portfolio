@@ -1,67 +1,187 @@
 @import '../styles/globalvars/globalvars.scss';
 
-.navbar {
-  width: 20rem;
-  height: 100vh;
-  background: $dark;
+$component: 'navbar';
+
+.#{$component} {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.8), 
+      rgba(0, 0, 0, 0.4) 30%, 
+      rgba(0, 0, 0, 0.4) 70%, 
+      rgba(0, 0, 0, 0.8)
+    ), url(../assets/mountains_1920.jpg);
+  background-position: center 0px;
   &__box {
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 5rem 6rem 8rem;
+    box-sizing: border-box;
   }
   &__logo {
-    padding: 40px 10px;
-    margin-bottom: 4rem;
+    margin-bottom: 9vh;
     font-family: $fontGugi;
-    font-size: 4rem;
+    font-size: 0;
     font-weight: normal;
     text-align: center;
-    div {
-      margin-top: 1rem;
-      color: $grey;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-    }
-    span {
-      color: $primary;
-    }
     a {
-      color: inherit;
+      color: $grey;
+      font-size: 2rem;
       text-decoration: none;
+      text-transform: uppercase;
     }   
   }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &-img {
+      overflow: hidden;
+      width: 14vh;
+      height: 14vh;
+      min-width: 80px;
+      min-height: 80px;
+      border: 2px solid black;
+      border-radius: 50%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &-desc {
+      margin-top: 3vh;
+      color: $grey;
+      font-size: 1.8rem;
+      line-height: 2.5;
+      text-align: right;
+    }
+  }
   &__nav {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 6vh;
+    color: $grey;
     &-menu {
       position: relative;
-      height: 8rem;
-      background: $dark;
     }
     a {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: calc(100% + 2rem);
-      height: 100%;
-      padding: 0 1rem;
-      background: $dark;
+      position: relative;
+      display: block;
+      padding: 1.4rem 0;
       color: inherit;
       font-family: $fontGugi;
       font-size: 2.2rem;    
       text-decoration: none;
       text-transform: uppercase;
-      transition: 0.5s right;
-      box-sizing: border-box;
+      transition: 0.5s all;
+      &:after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 100%;
+        height: 2px;
+        background: $grey;
+        transition: 0.5s all;
+        content: '';
+      }
       &.is-selected, &:focus, &:hover {
-        right: -2rem;
-        background: $black;
+        margin-bottom: 2rem;
+        &:after {
+          right: 0
+        }
       }
       &.is-selected {
-        color: $primary;
+        margin-bottom: 0;
+        color: $color5;
+        &:after {
+          right: 100%;
+        }
       }
+    }
+  }
+  &__icons {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;;
+    flex: 1;
+    a {
+      padding: 0;
+      margin-left: 3rem;
+      &:hover, &:focus {
+        [name] {
+          fill: $color5;
+        }  
+      }
+    }
+    [name] {
+      width: 40px;
+      height: 40px;
+      fill: $grey;
+      transition: 0.5s fill;
+    }
+  }
+}
+
+@include breakpoint(md) {
+  .#{$component} {
+    &__box {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+    &__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      margin-bottom: 4rem;
+    }
+    &__content {
+      align-items: center;
+      &-desc {
+        text-align: center;
+      }
+    }
+    &__nav {
+      display: none;
+    }
+    &__icons {
+      position: absolute;
+      top: 6rem;
+      right: 6rem;
+      a {
+        margin-left: 2rem;
+      }
+      [name] {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+@include breakpoint(md) {
+  .#{$component} {
+    &__box {
+      padding: 8rem 4rem 5rem;
+    }
+    &__logo {
+      margin-bottom: 2.4rem;
+    }
+    &__content {
+      &-img {
+        width: 12rem;
+        height: 12rem;
+      }
+      &-desc {
+        line-height: 2;
+      }
+    }
+    &__icons {
+      top: 2rem;
+      right: 2rem;
     }
   }
 }

@@ -1,27 +1,31 @@
 import { MenuModel } from '../models/MenuModel';
-import { HomeView } from './HomeView';
 import { AboutView } from './AboutView';
 import { ProjectsView } from './ProjectsView';
 import { debounce, scrollTo, throttle } from '../helpers/utils';
 import compStyle from './ContentListView.scss';
+import { ContactView } from './ContactView';
+import { ProjectsModel } from '../models/ProjectsModel';
 
-interface ContentModule {
-  setElements(): void;
+interface ViewConstructor {
+    new (elem: HTMLElement, args?: any): ViewInterface;
+}
+interface ViewInterface {
+    setElements(): void;
 }
 
-const viewsArray = [HomeView, AboutView, ProjectsView];
+interface HasData {
+  data: any[] | {};
+}
 
 export class ContentListView {
   $container: HTMLElement;
   $sections: NodeList;
   currentIdx: number;
   sectionsBorder: number[] = [];
-  childrenModules: ContentModule[] = [];
   
   constructor(public $wrapper: HTMLElement, public model: MenuModel) {
     this.currentIdx = model.data.selected.idx;
     this.setElements();
-    this.setChildrenElements();
     this.calculateSectionsBorder();
     this.bindEvents();
   }
@@ -29,16 +33,17 @@ export class ContentListView {
   setElements(): void {
     this.$container = this.$wrapper.appendChild(document.createElement('div'));
     this.$container.classList.add(compStyle.contents);
+    this.createSections(AboutView);
+    this.createSections(ProjectsView, new ProjectsModel());
+    this.createSections(ContactView);
+    this.$sections = this.$container.querySelectorAll(`.${compStyle.contents__section}`);
   }
 
-  setChildrenElements(): void {
-    for (const module of viewsArray) {
-      const $elem = document.createElement('section');
-      $elem.classList.add(compStyle.contents__section);
-      new module($elem);
-      this.$container.appendChild($elem);
-    }
-    this.$sections = this.$wrapper.querySelectorAll(`.${compStyle.contents__section}`);
+  createSections(module: ViewConstructor, model?: HasData): void {
+    const $elem = document.createElement('section');
+    $elem.classList.add(compStyle.contents__section);
+    new module($elem, model);
+    this.$container.appendChild($elem);
   }
 
   bindEvents(): void {
@@ -46,23 +51,24 @@ export class ContentListView {
     this.model.on('menuChange', () => {
       this.gotoSection(this.model.data.selected.idx);
     });
-    this.$container.addEventListener('wheel', throttle(() => {
-      this.checkSection();
-    }, 200))
+    // window.addEventListener('wheel', throttle(() => {
+    //   this.checkSection();
+    // }, 200))
   }
 
   calculateSectionsBorder(): void {
     this.sectionsBorder = [];
     for (let i = 0, max = this.$sections.length; i < max; i++) {
-      const top = (this.$sections[i] as HTMLElement).getBoundingClientRect().top + this.$container.scrollTop;
+      const top = (this.$sections[i] as HTMLElement).getBoundingClientRect().top + window.scrollY;
       this.sectionsBorder.push(top);
     }
   }
 
   checkSection(): void {
+    const currentTop = window.scrollY;
+    // if (currentTop)
+
     for (let i = 0, max = this.sectionsBorder.length; i < max; i++) {
-      const currentTop = this.$container.scrollTop;
-      
       if (this.sectionsBorder[i] <= currentTop) {
         if (this.sectionsBorder[i + 1] > currentTop || i === max - 1) {
           if (this.currentIdx !== i) {
@@ -78,7 +84,7 @@ export class ContentListView {
   gotoSection = (idx: number): void => {
     if (this.currentIdx !== idx) {
       this.currentIdx = idx;
-      scrollTo(this.sectionsBorder[idx], true, this.$container);
+      scrollTo(this.sectionsBorder[idx], true, window);
     }
   }
 

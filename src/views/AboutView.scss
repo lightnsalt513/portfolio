@@ -1,7 +1,106 @@
 @import '../styles/globalvars/globalvars.scss';
 
-.about {
-  height: 100vh;
-  width: 100%;
-  // background: red;
+$component: 'about';
+
+.#{$component} {
+  display: block;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      @include title;
+    }
+    p {
+      font-size: 1.8rem;
+      letter-spacing: 0.1rem;
+      line-height: 1.8;
+    }
+  }
+  &__cta {
+    margin-top: 3rem;
+    a {
+      @include buttonPill;
+    }
+  }
+  &__detail {
+    padding-top: 6rem;
+    margin-top: 6rem;
+    border-top: 1px solid $greyLight;
+    &-keyword {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -1rem 0 0 -1rem;
+      li {
+        @include tag;
+        margin: 1rem 0 0 1rem;
+      }
+    }
+    &-skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 6rem;
+      div {
+        display: flex;
+        align-items: center;
+        width: 46%;
+        margin: 2rem 0;
+        &:nth-child(1) em {
+          background: $color1;
+        }
+        &:nth-child(2) em {
+          background: $color2;
+        }
+        &:nth-child(3) em {
+          background: $color3;
+        }
+        &:nth-child(4) em {
+          background: $color4;
+        }
+        &:nth-child(5) em {
+          background: $color5;
+        }
+      }
+      dt {
+        width: 10rem;
+        font-size: 1.4rem;
+      }
+      dd {
+        overflow: hidden;
+        position: relative;
+        flex: 1;
+        height: 1.2rem;
+        background: #ccc;
+        border-radius: 5rem;
+        span {
+          @include hidden;
+        }
+      }
+      em {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-radius: 5rem;
+      }
+    }
+  }
+}
+
+@include breakpoint(md) {
+  .#{$component} {
+    &__detail-skills {
+      div {
+        width: 100%;
+        margin: 4rem 0 0;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      dt {
+        font-size: 12px;
+      }
+    }
+  }
 }

@@ -1,14 +1,40 @@
 // Breakpoints
-$screen_tablet: 1440px;
-$screen_mobile: 768px;
+$screen_lg: 1280px;
+$screen_md: 980px;
+$screen_sm: 768px;
+$screen_xsm: 375px;
 
 // Colors
 $black: #000;
 $dark: #111111;
 $darkMedium: #1b1b1b;
-$grey: #aaa;
-$primary: #ff718a;
+$brown: #433622;
+$grey: #bbb;
+$greyLight: #ddd;
+$greyMedium: #888;
+$greyDark: #646464;
 $disabled: gray;
+
+$color1: #033f63;
+$color2: #28666e;
+$color3: #7c9885;
+$color4: #b5b682;
+$color5: #fedc97;
+
+$tag1: #8b5580;
+$tag2: #c38890;
+$tag3: #a593a5;
+$tag4: #666092;
+$tag5: #9a4f50;
+$tag6: #c28d75;
+$tag7: #387080;
+$tag8: #6e6962;
+$tag9: #93a167;
+$tag10: #6eaa78;
+$tag11: #557064;
+$tag12: #be955c;
+$tag13: #8d6268;
+$tag14: #416aa3;
 
 // Fonts
 $fontGugi: 'Gugi', arial, sans-serif;
@@ -16,3 +42,4 @@ $fontDefault: 'Roboto', 'Noto Sans KR', arial, sans-serif;
 
 // Common Layout
 $contentPadding: 8rem;
+$contentPaddingSm: 4rem;

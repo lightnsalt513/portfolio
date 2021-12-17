@@ -16,18 +16,18 @@ export class MenuModel {
     selected: {},
     list: [
       {
-        location: '/',
-        name: 'Home',
-        idx: 0
-      },
-      {
         location: '#about',
         name: 'About',
-        idx: 1
+        idx: 0
       },
       {
         location: '#projects',
         name: 'Projects',
+        idx: 1
+      },
+      {
+        location: '#contact',
+        name: 'Contact',
         idx: 2
       }
     ]

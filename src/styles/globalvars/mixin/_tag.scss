@@ -1,0 +1,12 @@
+@mixin tag {
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  background: $grey;
+  color: #fff;
+  font-size: 1.4rem;
+
+  @include breakpoint(md) {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

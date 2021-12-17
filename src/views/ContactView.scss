@@ -1,0 +1,74 @@
+@import '../styles/globalvars/globalvars.scss';
+
+$component: 'contact';
+
+.#{$component} {
+  display: block;
+  &__title {
+    @include title;
+  }
+  &__content {
+    display: block;
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: -4rem;
+    }
+  }
+  &__field {
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+    width: 50%;
+    font-size: 1.8rem;
+    dt {
+      width: 6rem;
+      font-size: 0;
+      [name] {
+        width: 3rem;
+        height: 3rem;
+        fill: $greyDark;
+      }
+      span {
+        @include hidden;
+      }
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      @include buttonLink;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  .#{$component} {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4rem;
+    border-top: 1px solid $greyLight;
+    &__content {
+      padding-left: 3rem;
+      dl {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+    }
+    &__field {
+      width: 100%;
+      box-sizing: border-box;
+      dt {
+        width: 4rem;
+      }
+    }
+  }
+}
+
+@include breakpoint(xsm) {
+  .#{$component} {
+    display: block;
+    &__content {
+      padding-left: 0;
+    }
+  }
+}

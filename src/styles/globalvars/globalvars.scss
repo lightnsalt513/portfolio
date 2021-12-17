@@ -2,6 +2,9 @@
 @import './variables';
 
 // Mixins
+@import './mixin/tag';
+@import './mixin/text';
+@import './mixin/button';
 @import './mixin/animation';
 @import './mixin/hidden';
 @import './mixin/layout';
