@@ -74,7 +74,6 @@ export class NavbarView<T> {
         const hash = (item as HTMLAnchorElement).hash;
         if (hash === window.location.hash) {
           item.click();
-          item.focus();
         }
       });
     }
@@ -89,6 +88,7 @@ export class NavbarView<T> {
         item.classList.add(`${compStyle[this.selectedClass]}`);
       } else {
         item.classList.remove(`${compStyle[this.selectedClass]}`);
+        item.blur();
       }
     });
   }
