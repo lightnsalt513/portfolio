@@ -43,3 +43,8 @@ $fontDefault: 'Roboto', 'Noto Sans KR', arial, sans-serif;
 // Common Layout
 $contentPadding: 8rem;
 $contentPaddingSm: 4rem;
+
+// Exports
+:export {
+  BREAKPOINT_MD: $screen_md;
+}

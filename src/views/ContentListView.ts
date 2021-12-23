@@ -1,10 +1,11 @@
 import { MenuModel } from '../models/MenuModel';
 import { AboutView } from './AboutView';
 import { ProjectsView } from './ProjectsView';
-import { debounce, scrollTo, throttle } from '../helpers/utils';
-import compStyle from './ContentListView.scss';
 import { ContactView } from './ContactView';
 import { ProjectsModel } from '../models/ProjectsModel';
+import { debounce, scrollTo, throttle } from '../helpers/utils';
+import compStyle from './ContentListView.scss';
+import VARIABLES from '../styles/globalvars/_variables.scss';
 
 interface ViewConstructor {
     new (elem: HTMLElement, args?: any): ViewInterface;
@@ -21,13 +22,14 @@ export class ContentListView {
   $container: HTMLElement;
   $sections: NodeList;
   currentIdx: number;
+  viewType: string;
   sectionsBorder: number[] = [];
   
   constructor(public $wrapper: HTMLElement, public model: MenuModel) {
     this.currentIdx = model.data.selected.idx;
     this.setElements();
-    this.calculateSectionsBorder();
     this.bindEvents();
+    this.onResize();
   }
 
   setElements(): void {
@@ -51,9 +53,16 @@ export class ContentListView {
     this.model.on('menuChange', () => {
       this.gotoSection(this.model.data.selected.idx);
     });
-    // window.addEventListener('wheel', throttle(() => {
-    //   this.checkSection();
-    // }, 200))
+  }
+
+  scollHandler: () => void = throttle(this.checkSection.bind(this), 200);
+
+  bindDesktopEvent(type: boolean): void {
+    if (type) {
+      window.addEventListener('scroll', this.scollHandler);
+    } else {
+      window.removeEventListener('scroll', this.scollHandler);
+    }
   }
 
   calculateSectionsBorder(): void {
@@ -66,7 +75,12 @@ export class ContentListView {
 
   checkSection(): void {
     const currentTop = window.scrollY;
-    // if (currentTop)
+    if (currentTop >= (document.documentElement.scrollHeight - window.innerHeight)) {
+      let i = this.sectionsBorder.length - 1;
+      this.currentIdx = i;
+      this.model.changeSelected('idx', i);
+      return;
+    }
 
     for (let i = 0, max = this.sectionsBorder.length; i < max; i++) {
       if (this.sectionsBorder[i] <= currentTop) {
@@ -84,11 +98,20 @@ export class ContentListView {
   gotoSection = (idx: number): void => {
     if (this.currentIdx !== idx) {
       this.currentIdx = idx;
-      scrollTo(this.sectionsBorder[idx], true, window);
+      scrollTo(this.sectionsBorder[idx], true);
     }
   }
 
   onResize(): void {
+    const currentView = window.innerWidth <= VARIABLES.BREAKPOINT_MD.replace('px', '') ? 'MO' : 'PC';
+    if (this.viewType !== currentView) {
+      this.viewType = currentView;
+      if (currentView === 'PC') {
+        this.bindDesktopEvent(true);
+      } else {
+        this.bindDesktopEvent(false);
+      }
+    }
     this.calculateSectionsBorder();
   }
 }
