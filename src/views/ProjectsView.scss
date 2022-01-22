@@ -7,6 +7,12 @@ $component: 'projects';
   &__title {
     @include title;
   }
+  &__disclaimer {
+    margin: -4rem 0 6rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
   &__list {
     display: flex;
     flex-direction: column;
@@ -59,7 +65,7 @@ $component: 'projects';
         color: #fff;
       }
       [data-name=Express],
-      [data-name=MySQL] {
+      [data-name=MongoDB] {
         background: $tag3;
         color: #fff;
       }
@@ -124,6 +130,12 @@ $component: 'projects';
 
 @include breakpoint(sm) {
   .#{$component} {
+    &__disclaimer {
+      margin: -3rem 0 4.2rem;
+      br {
+        display: none;
+      }
+    }
     &__thumb {
       width: 10rem;
       height: 10rem;
