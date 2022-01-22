@@ -26,6 +26,9 @@ export class ProjectsView {
     
     this.$container.innerHTML = `
       <h2 class=${compStyle.projects__title}>Recent Works</h2>
+      <div class=${compStyle.projects__disclaimer}>
+        <p>프로젝트 상세 내용은 각 Github 경로의 README 파일을 참고해 주세요. <br />가장 최근 작업물이 목록의 최상단에 위치합니다.</p>
+      </div>
       <ul class=${compStyle.projects__list}>
         ${createProjectList}
       </ul>
