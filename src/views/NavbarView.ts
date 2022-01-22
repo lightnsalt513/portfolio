@@ -53,7 +53,7 @@ export class NavbarView<T> {
   }
   
   bindEvents(): void {
-    window.addEventListener('DOMContentLoaded', this.onHashChange.bind(this));
+    window.addEventListener('load', this.onHashChange.bind(this));
     window.addEventListener('hashchange', this.onHashChange.bind(this));
     this.$navMenu.addEventListener('click', this.onMenuClick.bind(this));
     this.model.on('menuChange', () => {
@@ -62,9 +62,11 @@ export class NavbarView<T> {
   }
 
   onMenuClick(e: Event): void {
-    const $target = e.target as HTMLElement;
+    const $target = e.target as HTMLAnchorElement;
     if ($target.tagName !== 'A') return;
-    let idx = Number($target.getAttribute('data-idx'));
+    const idx = Number($target.getAttribute('data-idx'));
+    const hash = $target.hash;
+    this.currentLocation = hash;
     this.model.changeSelected('idx', idx);
   }
 
@@ -73,6 +75,7 @@ export class NavbarView<T> {
       this.$navMenuItems.forEach((item: HTMLElement) => {
         const hash = (item as HTMLAnchorElement).hash;
         if (hash === window.location.hash) {
+          this.currentLocation = hash;
           item.click();
         }
       });

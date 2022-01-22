@@ -29,7 +29,12 @@ export class ContentListView {
     this.currentIdx = model.data.selected.idx;
     this.setElements();
     this.bindEvents();
-    this.onResize();
+    
+    if (document.readyState === 'complete') {
+      this.onResize();
+    } else {
+      window.addEventListener('load', this.onResize.bind(this));
+    }
   }
 
   setElements(): void {
@@ -98,6 +103,12 @@ export class ContentListView {
   }
 
   gotoSection = (idx: number): void => {
+    if (!this.sectionsBorder.length) {
+      setTimeout(() => {
+        this.gotoSection(idx);
+      }, 150);
+      return;
+    }
     if (this.currentIdx !== idx) {
       this.currentIdx = idx;
       scrollTo(this.sectionsBorder[idx], true);
