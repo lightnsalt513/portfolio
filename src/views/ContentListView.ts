@@ -68,8 +68,10 @@ export class ContentListView {
   calculateSectionsBorder(): void {
     this.sectionsBorder = [];
     for (let i = 0, max = this.$sections.length; i < max; i++) {
-      const top = (this.$sections[i] as HTMLElement).getBoundingClientRect().top + window.scrollY;
-      this.sectionsBorder.push(top);
+      const top =
+        (this.$sections[i] as HTMLElement).getBoundingClientRect().top +
+        window.scrollY;
+      this.sectionsBorder.push(Math.ceil(top));
     }
   }
 
