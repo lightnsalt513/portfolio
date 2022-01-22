@@ -1,6 +1,6 @@
 import { MenuModel } from '../models/MenuModel';
 import compStyle from './NavbarView.scss';
-import avatarImage from '../assets/avatar.jpg';
+import avatarImage from '../assets/avatar.png';
 import 'boxicons';
 export class NavbarView<T> {
   $container: HTMLElement;
