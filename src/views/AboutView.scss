@@ -15,12 +15,13 @@ $component: 'about';
       font-size: 1.8rem;
       letter-spacing: 0.1rem;
       line-height: 1.8;
+      word-break: keep-all;
       & + p {
         margin-top: 1.4rem;
       }
     }
     strong {
-      color: $color1;
+      // color: $darkMedium;
       font-weight: bold;
     }
   }

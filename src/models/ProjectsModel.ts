@@ -12,7 +12,7 @@ export class ProjectsModel {
     {
       title: 'Watch Configurator (React version)',
       description:
-        '기존 진행했던 jQuery 기반의 프로젝트를 React와 TypeScript를 활용하여 일부분 재구현',
+        '기존 진행했던 jQuery 기반의 프로젝트를 React와 TypeScript를 활용하여 부분 재구현',
       tags: ['React', 'Redux', 'TypeScript', 'SASS'],
       imgUrl: 'https://via.placeholder.com/150',
       github: 'https://github.com/lightnsalt513/configurator-react',
@@ -21,7 +21,7 @@ export class ProjectsModel {
     {
       title: 'Portfolio Site',
       description:
-        '스태틱한 포트폴리오 사이트를 JavaScript(TypeScript)만을 활용하여 컴포넌트 방식으로 개발',
+        'JavaScript(TypeScript)만을 활용하여 스태틱한 포트폴리오 사이트를 컴포넌트 방식으로 개발',
       tags: ['TypeScript', 'SASS'],
       imgUrl: 'https://via.placeholder.com/150',
       github: 'https://github.com/lightnsalt513/portfolio',
@@ -47,7 +47,7 @@ export class ProjectsModel {
     {
       title: 'Canvas R&amp;D',
       description:
-        'Web API Canvas를 활용한 텍스트 애니메이션을 스크롤 기반으로 적용해 본 R&amp;D 프로젝트',
+        '스크롤 기반 텍스트 애니메이션을 Canvas API를 활용해 구현한 R&amp;D 프로젝트',
       tags: ['JavaScript', 'jQuery', 'TweenMax', 'ScrollMagic'],
       imgUrl: 'https://via.placeholder.com/150',
       github: 'https://github.com/lightnsalt513/canvas-rnd',
@@ -56,7 +56,7 @@ export class ProjectsModel {
     {
       title: 'Watch Configurator',
       description:
-        '다양한 갤럭시 워치와 여러 밴드를 결합해보며 상품을 고를 수 있는 애니메이션 중심의 프로모셔널 컴포넌트 개발 <br /> (보안 등의 이슈로 Github에 소스코드는 포함되어 있지 않습니다. 작업내용은 README를 참고해 주세요.)',
+        '갤럭시 워치와 여러 밴드를 결합해보며 상품을 고를 수 있는, 애니메이션 효과 중심의 프로모셔널 컴포넌트 개발 <br /> (보안 등의 이슈로 Github에 소스코드는 포함되어 있지 않습니다. 작업내용은 README를 참고해 주세요.)',
       tags: ['JavaScript', 'jQuery', 'SASS', 'TweenMax'],
       imgUrl: 'https://via.placeholder.com/150',
       github: 'https://github.com/lightnsalt513/configurator-jquery',

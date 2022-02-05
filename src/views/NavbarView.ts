@@ -26,7 +26,9 @@ export class NavbarView<T> {
           <div class=${compStyle[`navbar__content-img`]}>
             <img src=${avatarImage}>
           </div>
-          <p class=${compStyle[`navbar__content-desc`]}>Jay Do / Front-end Developer <br>HTML / CSS / JavaScript</p>
+          <p class=${
+            compStyle[`navbar__content-desc`]
+          }>Jay Do / Front-end Developer</p>
         </div>
         <nav class=${compStyle.navbar__nav}>
           ${this.model.data.list.map((menu, i) => {

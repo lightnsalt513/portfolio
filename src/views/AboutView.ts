@@ -2,7 +2,7 @@ import compStyle from './AboutView.scss';
 
 export class AboutView {
   $container: HTMLElement;
-  
+
   constructor(public $wrapper: HTMLElement) {
     this.setElements();
   }
@@ -14,16 +14,18 @@ export class AboutView {
       <div class=${compStyle.about__content}>
         <h2>About me</h2>
         <p>
-          한 웹에이전시의 퍼블리셔로 일한 4년반. 이 중 3년은 삼성전자 프로젝트들을 다수 진행하며 <strong>반응형 UI</strong>, <strong>웹접근성</strong> 그리고 <strong>글로벌 확장성</strong> 대응에 대한 숙련도를 높였고,
-          또 해당 기간 중 1여년은 JavaScript 개발 업무까지 진행해 볼 수 있는 기회를 잡으면서 프론트엔드 개발자로 성장하고자 하는 의지를 굳혔습니다.
+          공감을 기반으로하는 소통과 협업을 중시하는 Front-end 개발자 도재경입니다.
         </p>
         <p>
-          어렵거나 부족한 기획/디자인 요건이라도 최대한 구현해 낼 수 있는 방법을 찾거나 좋은 대안을 찾아 제안하는 등 <strong>문제해결</strong>하는 것에 큰 보람을 느낍니다. 
-          현재는 JavaScript에 대한 공부와 React, TypeScript 를 학습하고 있으며 요즘은 구현 방법을 넘어 좋은 '설계'가 어떤것인지에 대한 궁금증이 있습니다.
+          대기업 글로벌 웹사이트 구축/운영 프로젝트 경험을 통해 다국어, 반응형, 웹접근성 대응 전문성을 쌓았으며,
+          체계적이고 투명한 일정관리 및 커뮤니케이션 역량을 인정받아 다수의 프로젝트에서 마크업 리드로도 참여했습니다.
         </p>
-        <div class=${compStyle.about__cta}>
-          <a href="javascript:void(0)" title="새창열기: CV" target="_blank">Go to CV</a>
-        </div>
+        <p>
+          공동의 목표를 가진 다양한 동료들과 유기적 협업을 통해 결과물을 만드는 일에 기쁨을 느끼며,
+          새로운 환경과 상황에 기민하게 적응하고 도전적인 자세로 임합니다.
+          퍼블리셔로 전향한 이후 4년 반 동안 꾸준한 자기 역량계발을 통해 JavaScript 개발자로까지 성장했습니다.
+          그리고 지금까지의 경험들을 기반으로 더 크게 도전하고 함께 성장할 수 있는 환경에서 멋진 FE 개발자가 되길 희망합니다. 
+        </p>
         <div class=${compStyle.about__detail}>
           <ul class=${compStyle['about__detail-keyword']}>
             <li># Web Standard</li>
