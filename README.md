@@ -12,7 +12,7 @@
 * 컴포넌트 개발 개념을 조금 더 이해하기 위해 스태틱한 개인 포트폴리오 사이트를 JavaScript만으로 컴포넌트화 하여 개발 시도. 별도 TypeScript 스터디한 것을 바탕으로 프로젝트에 함께 적용
 * 반응형 UI 및 웹접근성 대응
 * 크로스브라우징: 최신 브라우저
-> **Demo URL** : 
+> **Live URL** : https://lightnsalt513.github.io/portfolio/
 * **주요 작업 부분** :
   * 처음에는 JavaScript로 작업을 시작했으나, TypeScript 스터디를 진행 후 프로젝트 구조 변경하여 진행.
   * 각 섹션(`AboutView`, `ProjectsView`, `ContactView`)들을 구성하는 컨텐츠 영역은 스크롤에 따라 메뉴가 활성화 되고, 메뉴 변경 시 해당 섹션으로 스크롤 이동이 필요한 기능들이 있어 이런 역할을 공통으로 담당하는 `ContentListView` 컴포넌트를 생성. 해당 컴포넌트에서 각 섹션들을 자식 컴포넌트 개념으로 호출하여 DOM 생성.
