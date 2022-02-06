@@ -31,8 +31,8 @@ $component: 'projects';
     }
   }
   &__thumb {
-    width: 12rem;
-    height: 12rem;
+    width: 20rem;
+    height: 100%;
     img {
       width: 100%;
       height: 100%;
@@ -135,10 +135,6 @@ $component: 'projects';
       br {
         display: none;
       }
-    }
-    &__thumb {
-      width: 10rem;
-      height: 10rem;
     }
     &__content {
       margin-left: 1.8rem;

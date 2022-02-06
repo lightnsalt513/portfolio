@@ -18,7 +18,6 @@ export class ProjectsView {
   setElements(): void {
     this.$container = this.$wrapper.appendChild(document.createElement('div'));
     this.$container.classList.add(compStyle.projects);
-    console.log(this.model.data)
     
     const createProjectList = this.model.data.map((item: ProjectItem) => {
       return this.createProjectItem(item);
@@ -54,7 +53,9 @@ export class ProjectsView {
             </ul>
             <div class=${compStyle['projects__content-cta']}>
               <a href=${data.github} target="_blank" title="새창열기: 깃허브 소스코드"><box-icon type='logo' name='github'></box-icon>Github</a>
-              <a href=${data.liveUrl} target="_blank" title="새창열기: 라이브/데모 페이지"><box-icon name='window-open'></box-icon>Live</a>
+              ${(data.title !== 'Portfolio Site') && function() {
+                return `<a href=${data.liveUrl} target="_blank" title="새창열기: 라이브/데모 페이지"><box-icon name='window-open'></box-icon>Live</a>`
+              }()}
             </div>
           </div>
         </div>
